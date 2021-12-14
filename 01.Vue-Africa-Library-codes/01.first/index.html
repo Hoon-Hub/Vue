@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Vue project Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <div>
+            <button @click="changeVisible">Disable</button>
+            <h1 v-if="visible">Visible이 true일 때 나타남</h1>
+        </div>
+        <div>
+            <h1>배열반복</h1>
+            <p v-for="(array, index) in arrays" :key="index">
+                {{ array }}
+            </p>
+        </div>
+        <div>
+            <h1>객체배열반복</h1>
+            <div>
+                <table>
+                    <thead>
+                        <td>이름</td>
+                        <td>나이</td>
+                    </thead>
+                    <tbody>
+                        <tr  v-for="object in objects" :key="object">
+                            <td>{{ object.name }}</td>
+                            <td>{{ object.age }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        const firstApp = new Vue({
+            el: '#app',
+            data: {
+                visible: true,
+                arrays: ['num1', 'num2', 'num3', 'num4', 'num5'],
+                objects: [{
+                    name: '홍길동',
+                    age: 245
+                },
+                {
+                    name: '고길동',
+                    age: 200
+                }
+            ]
+            },
+            methods: {
+                changeVisible() {
+                    this.visible = !this.visible
+                }
+            }
+        })
+    </script>
+</body>
+</html>

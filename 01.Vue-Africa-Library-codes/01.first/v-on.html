@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="click">클릭</button><br>
+        <button v-on:dblclick="dbClick">더블클릭</button><br>
+        <button @click="changeVisible">사라지게하기</button>
+        <div v-if="visible">If it is visible.</div><br>
+        <div>
+            <ul>
+                <button @click="add">add</button>
+                <li v-for="n in numbers">{{ n }}</li>
+            </ul>
+        </div>
+        <div>
+            <input type="text" v-model="animal" @keyup.enter="capture">
+            <span v-for="animal in animals" :key="animal">{{ animal }},&nbsp;</span>
+        </div>
+    </div>
+
+    <script>
+        const firstApp = new Vue({
+            el: '#app',
+            data: {
+                visible: true,
+                numbers: [1,2,3,4,5,6],
+                animals: ['lion','tiger','owl','dog','cat','eagle']
+            },
+            methods: {
+                click () {
+                    alert('버튼 클릭')
+                },
+                dbClick () {
+                    alert('더블 클릭')
+                },
+                changeVisible () {
+                    this.visible = !this.visible
+                },
+                add () {
+                    let lastNum = this.numbers[this.numbers.length -1 ]
+                    lastNum += 1
+                    this.numbers.push(lastNum)
+                },
+                capture () {
+                    if( this.animal ) {
+                        this.animals.push(this.animal)
+                        this.animal=''
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
