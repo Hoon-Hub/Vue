@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-
 const routes = [
   {
     path: '/',
@@ -19,6 +18,11 @@ const routes = [
     path: '/Repeat01',
     name: 'Repeat01',
     component: () => import( '../views/Repeat01.vue')
+  },
+  {
+    path: '/다중이벤트',
+    name: '다중이벤트',
+    component: () => import( '../views/다중이벤트.vue')
   },
 ]
 
