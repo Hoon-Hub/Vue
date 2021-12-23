@@ -28,12 +28,12 @@ export default {
     data() {
         return {
             products: [
-                { name: '게이밍마우스', price: 34500, category: '컴퓨터/주변기기', delivery: 4000 },
-                { name: '무선게이밍마우스', price: 52000, category: '컴퓨터/주변기기', delivery: 3000 },
-                { name: '게이밍키보드', price: 42000, category: '컴퓨터/주변기기', delivery: 3000 },
-                { name: '무선게이밍키보드', price: 50000, category: '컴퓨터/주변기기', delivery: 4000 },
-                { name: '무선충전기기', price: 24000, category: '컴퓨터/주변기기', delivery: 3000 },
-                { name: '갤럭시탭', price: 385000, category: '모바일/휴대기기', delivery: 0 },
+                { name: "게이밍마우스", price: 34500, category: "컴퓨터/주변기기", delivery: 4000 },
+                { name: "무선게이밍마우스", price: 52000, category: "컴퓨터/주변기기", delivery: 3000 },
+                { name: "게이밍키보드", price: 42000, category: "컴퓨터/주변기기", delivery: 3000 },
+                { name: "무선게이밍키보드", price: 50000, category: "컴퓨터/주변기기", delivery: 4000 },
+                { name: "무선충전기기", price: 24000, category: "컴퓨터/주변기기", delivery: 3000 },
+                { name: "갤럭시탭", price: 385000, category: "모바일/휴대기기", delivery: 0 },
             ]
         }
     },

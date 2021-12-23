@@ -1,9 +1,12 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
+    <router-link to="/Props">Props</router-link> |
     <router-link to="/Repeat01">Repeat01</router-link> |
-    <router-link to="/다중이벤트">다중이벤트</router-link>
+    <router-link to="/다중이벤트">다중이벤트</router-link> |
+    <router-link to="/DataBindingList">DataBindingList</router-link><br>
+    <router-link to="/Parent">Refs</router-link> |
+
   </div>
   <router-view />
 </template>
