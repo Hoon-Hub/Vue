@@ -12,7 +12,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackPrefetch: false */ '../views/Props/Props.vue')
+    component: () => import(/* webpackPrefetch: 0 */ '../views/Props/Props.vue')
   },
   {
     path: '/Repeat01',
@@ -33,6 +33,26 @@ const routes = [
     path: '/Parent',
     name: 'Parent',
     component: () => import( '../views/Props/Parent.vue')
+  },
+  {
+    path: '/Calculator',
+    name: 'Calculator',
+    component: () => import( '../views/CompositionAPI/Calculator.vue')
+  },
+  {
+    path: '/Composition',
+    name: 'Composition',
+    component: () => import( '../views/CompositionAPI/CompositionAPI.vue')
+  },
+  {
+    path: '/Composition2',
+    name: 'Composition2',
+    component: () => import( '../views/CompositionAPI/CompositionAPI2.vue')
+  },
+  {
+    path: '/Provide',
+    name: 'Provide',
+    component: () => import( '../views/CompositionAPI/Provide.vue')
   },
 ]
 

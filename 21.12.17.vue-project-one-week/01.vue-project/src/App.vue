@@ -6,7 +6,7 @@
     <router-link to="/다중이벤트">다중이벤트</router-link> |
     <router-link to="/DataBindingList">DataBindingList</router-link><br>
     <router-link to="/Parent">Refs</router-link> |
-
+    <router-link to="/Calculator">CompositionAPI</router-link> |
   </div>
   <router-view />
 </template>
