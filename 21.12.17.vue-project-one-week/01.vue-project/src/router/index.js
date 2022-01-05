@@ -54,6 +54,11 @@ const routes = [
     name: 'Provide',
     component: () => import( '../views/CompositionAPI/Provide.vue')
   },
+  {
+    path: '/Directives',
+    name: 'Directives',
+    component: () => import( '../views/Directives/Directives.vue')
+  },
 ]
 
 

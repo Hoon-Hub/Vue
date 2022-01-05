@@ -7,6 +7,7 @@
     <router-link to="/DataBindingList">DataBindingList</router-link><br>
     <router-link to="/Parent">Refs</router-link> |
     <router-link to="/Calculator">CompositionAPI</router-link> |
+    <router-link to="/Directives">Direction</router-link> |
   </div>
   <router-view />
 </template>
