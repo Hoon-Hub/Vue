@@ -8,8 +8,10 @@
     <router-link to="/Parent">Refs</router-link> |
     <router-link to="/Calculator">CompositionAPI</router-link> |
     <router-link to="/Directives">Direction</router-link> |
+    <router-link to="/Plugins">Plugins</router-link> |
+    <router-view />
+
   </div>
-  <router-view />
 </template>
 
 <style>

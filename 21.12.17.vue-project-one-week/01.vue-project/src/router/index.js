@@ -59,8 +59,12 @@ const routes = [
     name: 'Directives',
     component: () => import( '../views/Directives/Directives.vue')
   },
+  {
+    path: '/Plugins',
+    name: 'Plugins',
+    component: () => import( '../views/Plugins.vue')
+  },
 ]
-
 
     // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
 
