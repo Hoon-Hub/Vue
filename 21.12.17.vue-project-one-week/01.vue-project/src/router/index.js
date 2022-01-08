@@ -64,6 +64,11 @@ const routes = [
     name: 'Plugins',
     component: () => import( '../views/Plugins.vue')
   },
+  {
+    path: '/Store',
+    name: 'Store',
+    component: () => import( '../views/StoreAccess.vue')
+  },
 ]
 
     // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')

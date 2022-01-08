@@ -9,6 +9,7 @@
     <router-link to="/Calculator">CompositionAPI</router-link> |
     <router-link to="/Directives">Direction</router-link> |
     <router-link to="/Plugins">Plugins</router-link> |
+    <router-link to="/Store">Store</router-link> |
     <router-view />
 
   </div>
