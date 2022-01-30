@@ -7,8 +7,12 @@
     <router-link to="/DataBindingList">DataBindingList</router-link><br>
     <router-link to="/Parent">Refs</router-link> |
     <router-link to="/Calculator">CompositionAPI</router-link> |
+    <router-link to="/Directives">Direction</router-link> |
+    <router-link to="/Plugins">Plugins</router-link> |
+    <router-link to="/Store">Store</router-link> |
+    <router-view />
+
   </div>
-  <router-view />
 </template>
 
 <style>

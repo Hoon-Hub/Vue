@@ -54,8 +54,22 @@ const routes = [
     name: 'Provide',
     component: () => import( '../views/CompositionAPI/Provide.vue')
   },
+  {
+    path: '/Directives',
+    name: 'Directives',
+    component: () => import( '../views/Directives/Directives.vue')
+  },
+  {
+    path: '/Plugins',
+    name: 'Plugins',
+    component: () => import( '../views/Plugins.vue')
+  },
+  {
+    path: '/Store',
+    name: 'Store',
+    component: () => import( '../views/StoreAccess.vue')
+  },
 ]
-
 
     // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
 
