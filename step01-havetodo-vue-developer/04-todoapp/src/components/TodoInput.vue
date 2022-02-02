@@ -5,17 +5,16 @@
         class="add__input" 
         placeholder="Enter your task" 
         v-model="newTodoItem"
-        @keyup.enter="addTodoItem"
+        @keyup.enter="addOneItem"
+        autofocus
       />
       <button 
         class="add__button"
-        @click="addTodoItem"  
+        @click="addOneItem"  
       >Add</button>
   </div>
 </template>
 <script>
-import getDate from "../assets/commonJS/getDate.js";
-
 export default {
   data () {
     return {
@@ -23,15 +22,9 @@ export default {
     }
   },
   methods: {
-    addTodoItem() {
+    addOneItem() {
       if (this.newTodoItem !== "") {
-        var value = {
-          item: this.newTodoItem,
-          date: `${getDate().date} ${getDate().week}`,
-          time: getDate().time,
-          completed: false
-        };
-        localStorage.setItem(this.newTodoItem, JSON.stringify(value));
+        this.$emit("addItem", this.newTodoItem)
         this.clearInput();
       }
     },

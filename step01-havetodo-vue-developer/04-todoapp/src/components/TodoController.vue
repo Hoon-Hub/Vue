@@ -1,8 +1,8 @@
 <template>
   <div class="controller">
       <div class="select">
-          <label for="order">Order</label>
-          <select name="order" id="order" class="selectbox">
+          <label class="blind" for="order">Order</label>
+          <select name="order" id="order" class="selectbox" v-model="selected" @change="sortTodo">
               <option value="date-asc">Date Ascending</option>
               <option value="date-desc">Date Descending</option>
               <option value="name-asc">Name Ascending</option>
@@ -15,7 +15,15 @@
 
 <script>
 export default {
+    data () {
+        return {
+            selected: "date-asc"
+        }
+    },
     methods: {
+        sortTodo () {
+            this.$emit("sortItem", {value: this.selected})
+        },
         clearCheck () {
             const res = confirm('정말 모두 삭제하시겠습니까?')
             if(res) {
@@ -23,7 +31,7 @@ export default {
             }
         },
         clearTodo () {
-            localStorage.clear()
+            this.$emit("clearAll")
         }
     }
 }
