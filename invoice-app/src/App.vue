@@ -3,7 +3,7 @@
   <div v-if="!mobile" class="app flex flex-column">
     <navigation></navigation>
     <div class="app-content flex flex-column">
-      <invoice-modal></invoice-modal>
+      <invoice-modal v-if="invoiceModal"></invoice-modal>
       <router-view />
     </div>
   </div>
@@ -16,6 +16,7 @@
 <script>
 import Navigation from '@/components/Navigation';
 import InvoiceModal from '@/components/InvoiceModal';
+import { mapState } from 'vuex';
 
 export default {
   components: {
@@ -31,7 +32,6 @@ export default {
     this.checkScreen()
     window.addEventListener("resize", this.checkScreen)
   },
-
   methods: {
     checkScreen () {
       const windowWidth = window.innerWidth
@@ -42,6 +42,9 @@ export default {
         this.mobile = false
       }
     }
+  },
+  computed: {
+    ...mapState(["invoiceModal"])
   }
 }
 </script>
