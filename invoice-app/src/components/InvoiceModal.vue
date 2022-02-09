@@ -71,7 +71,7 @@
               </div>
               <div class="input flex flex-column">
                   <label for="paymentTerms">Payment Terms</label>
-                  <select required type="text" id="paymentTerms" v-model="paymentTerms" >
+                  <select required id="paymentTerms" v-model="paymentTerms" >
                       <option value="30">Net 30 Days</option>
                       <option value="60">Net 60 Days</option>
                   </select>
@@ -103,17 +103,15 @@
               </div>
           </div>
           </div>
-
           
-
           <!-- Save/Exit -->
           <div class="save flex">
             <div class="left">
               <button type="button" @click="closeInvoice" class="red">Cancel</button>
             </div>
             <div class="right flex">
-              <button type="button" @click="saveDraft" class="dark-purple">Save Draft</button>
-              <button type="button" @click="publishInvoice" class="dark-purple">Create Invoice</button>
+              <button type="submit" @click="saveDraft" class="dark-purple">Save Draft</button>
+              <button type="submit" @click="publishInvoice" class="purple">Create Invoice</button>
             </div>
           </div>
       </form>
@@ -121,6 +119,8 @@
 </template>
 
 <script>
+import db from '@/firebase/firebaseInit.js'
+import { doc, setDoc } from "firebase/firestore";
 import { mapMutations } from 'vuex'
 import { uid } from 'uid'
 export default {
@@ -174,6 +174,64 @@ export default {
 
       deleteInvoiceItem (id) {
         this.invoiceItemList = this.invoiceItemList.filter((item) => item.id !== id)
+      },
+
+      calInvoiceTotal () {
+        this.invoiceTotal = 0
+        this.invoiceItemList.forEach(item => {
+          this.invoiceTotal += item.total
+        })
+      },
+
+      publishInvoice () {
+        console.log('publish')
+        this.invoicePending = true
+      },
+
+      saveDraft () {
+        this.invoiceDraft = true
+      },
+      
+      async uploadInvoice () {
+        if (this.invoiceItemList.length <= 0) {
+          alert('Please ensure you filled out work items!')
+          return
+        }
+
+        this.calInvoiceTotal()
+
+        const docData = {
+          invoiceId: uid(6),
+          billerStreetAddress: this.billerStreetAddress,
+          billerCity: this.billerCity,
+          billerZipCode: this.billerZipCode,
+          billerCountry: this.billerCountry,
+          clientName: this.clientName,
+          clientEmail: this.clientEmail,
+          clientStreetAddress: this.clientStreetAddress,
+          clientCity: this.clientCity,
+          clientZipCode: this.clientZipCode,
+          clientCountry: this.clientCountry,
+          invoiceDate: this.invoiceDate,
+          invoiceDateUnix: this.invoiceDateUnix,
+          paymentTerms: this.paymentTerms,
+          paymentDueDate: this.paymentDueDate,
+          paymentDueDateUnix: this.paymentDueDateUnix,
+          productDescription: this.productDescription,
+          invoiceItemList: this.invoiceItemList,
+          invoiceTotal: this.invoiceTotal,
+          invoicePending: this.invoicePending,
+          invoiceDraft: this.invoiceDraft,
+          invoicePaid: null
+        }
+
+        await setDoc(doc(db, "data", "one"), docData);
+        this.TOGGLE_INVOICE()
+      },
+
+      submitForm () {
+        console.log('submit form clicked')
+        this.uploadInvoice()
       }
     },
     watch: {
