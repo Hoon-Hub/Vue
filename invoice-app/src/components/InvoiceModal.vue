@@ -1,6 +1,7 @@
 <template>
   <div @click="checkClick" ref="invoiceWrap" class="invoice-wrap flex flex-column">
       <form @submit.prevent="submitForm" class="invoice-content">
+        <loading v-show="loading"/>
           <h1>New Invoice</h1>
 
           <!-- Bill from  -->
@@ -120,13 +121,18 @@
 
 <script>
 import db from '@/firebase/firebaseInit.js'
+import Loading from '@/components/Loading'
 import { doc, setDoc } from "firebase/firestore";
 import { mapMutations } from 'vuex'
 import { uid } from 'uid'
 export default {
     name: "invoiceModal",
+    components: {
+      Loading
+    },
     data () {
         return {
+            loading: null,
             dateOptions: {year: "numeric", month: "short", day: "numeric"},
             billerStreetAddress: null,
             billerCity: null,
@@ -156,7 +162,13 @@ export default {
       this.invoiceDate = new Date(this.invoiceDateUnix).toLocaleDateString('en-us', this.dateOptions)
     },
     methods: {
-      ...mapMutations(['TOGGLE_INVOICE']),
+      ...mapMutations(['TOGGLE_INVOICE', 'TOGGLE_MODAL']),
+
+      checkClick (e) {
+        if (e.target === this.$refs.invoiceWrap) {
+          this.TOGGLE_MODAL()
+        }
+      },
 
       closeInvoice() {
         this.TOGGLE_INVOICE()
@@ -198,6 +210,8 @@ export default {
           return
         }
 
+        this.loading = true
+
         this.calInvoiceTotal()
 
         const docData = {
@@ -226,7 +240,10 @@ export default {
         }
 
         await setDoc(doc(db, "data", "one"), docData);
+
+        this.laoding = false
         this.TOGGLE_INVOICE()
+
       },
 
       submitForm () {
