@@ -195,7 +195,7 @@ export default {
     methods: {
       ...mapMutations(['TOGGLE_INVOICE', 'TOGGLE_MODAL', 'TOGGLE_EDIT_INVOICE']),
 
-      ...mapActions(['UPDATE_INVOICE']),
+      ...mapActions(['UPDATE_INVOICE', 'GET_INVOICES']),
 
       checkClick (e) {
         if (e.target === this.$refs.invoiceWrap) {
@@ -275,8 +275,12 @@ export default {
 
         this.laoding = false
         
-        this.UPDATE_INVOICE()
+        const data = {
+          docId: this.docId,
+          routeId: this.$route.params.invoiceId
+        }
 
+        this.GET_INVOICES(data)
       },
 
       async updateInvoice () {
