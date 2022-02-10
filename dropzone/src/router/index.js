@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import DropZone from '../views/DropZone.vue'
+import Home from '../views/Home.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'DropZone',
-    component: DropZone
+    name: 'Home',
+    component: Home
   },
  
 ]
