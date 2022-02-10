@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Drag Or Drop</h1>
-    <drop-zone></drop-zone>
+    <drop-zone @drop.prevent="drop" @change="selectedFile"></drop-zone>
     <span class="file-info">File: {{ dropzoneFile.name }}</span>
   </div>
 </template>
@@ -17,8 +17,15 @@ export default {
   },
   setup () {
     let dropzoneFile = ref('')
+    const drop = (e) => {
+      dropzoneFile.value = e.dataTransfer.files[0]
+    }
 
-    return { dropzoneFile }
+    const selectedFile = () => {
+      dropzoneFile.value = document.querySelector('.dropzoneFile').files[0]
+    }
+
+    return { dropzoneFile, drop, selectedFile }
   }
 }
 </script>
