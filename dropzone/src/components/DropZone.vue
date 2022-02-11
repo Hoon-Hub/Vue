@@ -16,7 +16,6 @@
 
 <script>
 import { ref } from 'vue'
-
 export default {
   name: 'DropZone',
   setup () {
@@ -24,7 +23,6 @@ export default {
     const toggleActive = () => {
       active.value = !active.value
     }
-
     return { active, toggleActive}
   }
 }
@@ -42,24 +40,20 @@ export default {
   border: 2px dashed #41b883;
   background-color: #fff;
   transition: 0.3s ease all;
-
   label {
     padding: 8px 12px;
     color: #fff;
     background-color: #41b883;
     transition: 0.3s ease all;
   }
-
   input {
     display: none;
   }
 }
-
 .active-dropzone {
   color: #fff;
   border-color: #fff;
   background-color: #41b883;
-
   label {
     background-color: #fff;
     color: #41b883;
