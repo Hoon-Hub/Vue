@@ -4,6 +4,8 @@
 
     <p class="count">{{ count }}</p>
 
+    <p>Count Tripled {{ tripleCount }}</p>
+
     <div class="change-count">
       <i @click="increase" class="fal fa-plus"></i>
       <i @click="decrease" class="fal fa-minus"></i>
@@ -12,22 +14,26 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { computed } from "vue";
+import store from '@/store/index.js'
+
 export default {
   name: "Home",
   components: {},
   setup() {
-    const count = ref(0);
+    const count = computed( () => store.state.count )
+
+    const tripleCount = computed ( () => store.getters.tripleCount())
 
     const increase = () => {
-      count.value++;
+      store.mutations.increase()
     };
 
     const decrease = () => {
-      count.value--;
+      store.mutations.decrease()
     };
 
-    return { count, increase, decrease };
+    return { count, increase, decrease, store, tripleCount };
   },
 };
 </script>
