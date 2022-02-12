@@ -20,6 +20,9 @@ const mutations = {
 const getters = {
     tripleCount () {
         return state.count * 3
+    },
+    tripleOneCount () {
+        return state.count * 0.3
     }
 }
 

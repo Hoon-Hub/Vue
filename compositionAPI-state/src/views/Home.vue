@@ -5,6 +5,7 @@
     <p class="count">{{ count }}</p>
 
     <p>Count Tripled {{ tripleCount }}</p>
+    <p>Ceiled Tripled Deceased {{ tripleOneCount }}</p>
 
     <div class="change-count">
       <i @click="increase" class="fal fa-plus"></i>
@@ -30,8 +31,8 @@ export default {
   components: {},
   setup() {
     const count = computed( () => store.state.count )
-
     const tripleCount = computed ( () => store.getters.tripleCount())
+    const tripleOneCount = computed (() => Math.ceil(store.getters.tripleOneCount()))
 
     const increase = () => {
       store.mutations.increase()
@@ -50,21 +51,22 @@ export default {
       }
     })
 
-    return { count, increase, decrease, store, tripleCount, color };
+    return { count, increase, decrease, tripleOneCount, store, tripleCount, color };
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.home {
+  text-align: center;
+}
 h1 {
   margin-top: 16px;
-  text-align: center;
 }
 
 .count {
   margin-top: 32px;
   font-size: 60px;
-  text-align: center;
 }
 
 .change-count {
