@@ -10,6 +10,14 @@
       <i @click="increase" class="fal fa-plus"></i>
       <i @click="decrease" class="fal fa-minus"></i>
     </div>
+
+    <div class="cod">
+      <h1>Color of the day</h1>
+
+      <p>{{ color }}</p>
+
+      <input type="text" name="color" v-model="color">
+    </div>
   </div>
 </template>
 
@@ -33,7 +41,16 @@ export default {
       store.mutations.decrease()
     };
 
-    return { count, increase, decrease, store, tripleCount };
+    const color = computed({
+      get () {
+        return store.state.color
+      },
+      set (value) {
+        store.mutations.setColor(value)
+      }
+    })
+
+    return { count, increase, decrease, store, tripleCount, color };
   },
 };
 </script>

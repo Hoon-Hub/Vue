@@ -1,15 +1,22 @@
 <template>
   <div class="about">
     <h1>Counter Stats:</h1>
-    <p>Current Count:</p>
-    <p>Current Color:</p>
+    <p>Current Count: {{ count }}</p>
+    <p>Current Color: <span :class="color">{{ color }}</span></p>
   </div>
 </template>
 
 <script>
+import store from '@/store/index.js'
+import {computed} from 'vue'
 export default {
   name: "stats",
-  setup() {},
+  setup() {
+    const count = computed ( () => store.state.count)
+    const color = computed ( () => store.state.color)
+
+    return {count, color}
+  },
 };
 </script>
 
@@ -21,5 +28,11 @@ h1 {
 p {
   margin-top: 16px;
   font-size: 24px;
+}
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
 }
 </style>

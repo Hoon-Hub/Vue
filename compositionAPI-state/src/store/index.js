@@ -1,6 +1,7 @@
 import { reactive } from 'vue'
 const state = reactive({
     count: 10,
+    color: 'blue',
 })
 
 const mutations = {
@@ -9,6 +10,9 @@ const mutations = {
     },
     decrease () {
         state.count--
+    },
+    setColor (value) {
+        state.color = value
     }
 }
 
