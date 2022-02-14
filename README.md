@@ -25,3 +25,11 @@ webpack - build 예제 프로젝트(계산프로그램) 구현 [완료]
 - 22.02.11<br>
 - Vue.js3, store, mutations...<br>
 - Youtube <a href="">vue3-composition API</a> clonecoding<br>
+
+### Location app 
+- 22.02.15<br>
+- BackEnd: Express, cors, dotenv, port:3000<br>
+- FrontEnd: Vue.js3, tailwindcss, axios, leaflet ..etc.<br>
+- Using <a href="https://www.mapbox.com/">`Mapbox`</a> for location check. `(Not implemented_yet)`<br>
+
+
