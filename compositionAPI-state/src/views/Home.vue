@@ -24,7 +24,7 @@
 
 <script>
 import { computed } from "vue";
-import store from '@/store/index.js'
+import store from "@/store/index.js";
 
 export default {
   name: "Home",
@@ -34,12 +34,13 @@ export default {
     const tripleCount = computed ( () => store.getters.tripleCount())
     const tripleOneCount = computed (() => Math.ceil(store.getters.tripleOneCount()))
 
+
     const increase = () => {
-      store.mutations.increase()
+      store.mutations.increase();
     };
 
     const decrease = () => {
-      store.mutations.decrease()
+      store.mutations.decrease();
     };
 
     const color = computed({
