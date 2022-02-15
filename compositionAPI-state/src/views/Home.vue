@@ -15,22 +15,22 @@
 
 <script>
 import { computed } from "vue";
-import store from '@/store/index.js'
+import store from "@/store/index.js";
 
 export default {
   name: "Home",
   components: {},
   setup() {
-    const count = computed( () => store.state.count )
+    const count = computed(() => store.state.count);
 
-    const tripleCount = computed ( () => store.getters.tripleCount())
+    const tripleCount = computed(() => store.getters.tripleCount());
 
     const increase = () => {
-      store.mutations.increase()
+      store.mutations.increase();
     };
 
     const decrease = () => {
-      store.mutations.decrease()
+      store.mutations.decrease();
     };
 
     return { count, increase, decrease, store, tripleCount };
