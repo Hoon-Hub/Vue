@@ -31,4 +31,4 @@ webpack - build 예제 프로젝트(계산프로그램) 구현 [완료]
 - 22.02.17 ~<br>
 - Vue.js, router <br>
 - youtube <a href="https://www.youtube.com/watch?v=z-hhIrLqYM0">vue3 IP Address Tracker</a> clonecoding<br>
-- 
+- 해당 프로젝트는 사용하는 api 가 제공하던 위치 정보 서비스를 제거 했기 때문에 map 에 나타낼 수 없음. lng.. etc. 변경된  정보가 반영되지 않았음. 
