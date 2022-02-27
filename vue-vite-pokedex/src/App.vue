@@ -1,14 +1,16 @@
 <template>
   <h1>Twitch Pokedex</h1>
-  <pokedex-card></pokedex-card>
   <input type="text" v-model="filterText">
-  <p>Filter Text: {{ filterText }}</p>
   <ul>
-    <li v-for="(pokemon, index) in pokemonStore.filteredList" :key="`poke-${index}`">
-      #{{ pokemon.entry_number }} - {{ pokemon.pokemon_species.name }}
-    </li>
+    <pokedex-card 
+      v-for="(pokemon, index) in pokemonStore.filteredList" 
+      :key="`poke-${index}`" 
+      :number="pokemon.entry_number"
+      :name="pokemon.pokemon_species.name"
+    >
+      <!-- #{{ pokemon.entry_number }} - {{ pokemon.pokemon_species.name }} -->
+    </pokedex-card>
   </ul>
-  
 </template>
 
 <script setup>
@@ -30,28 +32,12 @@ onMounted( async () => {
   const pokeData = await fetch('https://pokeapi.co/api/v2/pokedex/2/')
     .then( res => res.json() )
 
+  const helloFetch = await fetch('/netlify/functions/hello-world.js').then( res => res.json() )
+
+  console.log({helloFetch})
+
   pokemonStore.list = pokeData.pokemon_entries
 })
-
-
-
-
-
-  // export default {
-  //   data: () => ({
-  //     pokemonList: []
-  //   }),
-  //   async mounted() {
-  //     const pokeData = await fetch('https://pokeapi.co/api/v2/pokedex/2/')
-  //       .then(res => res.json()
-  //       )
-
-  //       this.pokemonList = pokeData.pokemon_entries
-
-  //     console.log({ pokeData })
-  //   }
-  // }
-
 </script>
 
 <style>

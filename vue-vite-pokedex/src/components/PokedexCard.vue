@@ -1,9 +1,24 @@
 <template>
-  <h1>{{msg}}</h1>
+  <li>#{{ number }} - {{ displayName }}</li>
 </template>
 
 <script setup>
-const msg = 'my pokedex card'
+import { defineProps, computed } from 'vue'
+
+const props = defineProps({
+  name: {
+    type: String,
+    required: true
+  },  
+  number: {
+    type: Number,
+    required: true
+  }
+})
+
+const displayName = computed(() => {
+  return props.name[0].toUpperCase() + props.name.substring(1)
+})
 </script>
 
 <style>
